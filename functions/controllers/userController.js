@@ -3,10 +3,19 @@ const { db } = require("../config/config.js");
 const userController = {
   getUsers: async (req, res) => {
     const users = [];
-    const user = await db.collection("users").get();
+
+    const user = await db
+      .collection("users")
+      .where("role", "==", "EMPLOYEE")
+      .get();
+
     user.forEach((doc) => {
-      users.push(doc.data());
+      users.push({
+        id: doc.id,
+        ...doc.data(),
+      });
     });
+
     res.status(200).send(users);
   },
   createUser: async (req, res) => {

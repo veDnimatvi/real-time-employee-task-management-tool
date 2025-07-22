@@ -10,7 +10,7 @@ const authToken = environment.TWILIO_AUTH_TOKEN;
 const client = twilio(accountSid, authToken);
 
 const transporter = nodemailer.createTransport({
-  host: "smtp.ethereal.email",
+  host: "smtp.gmail.com",
   port: 587,
   secure: false, // true for 465, false for other ports
   auth: {
@@ -45,14 +45,16 @@ const authController = {
       });
     }
 
+    res.status(200).json({
+      code: 200,
+      success: true,
+      message: "Access code sent successfully",
+    });
+
     await client.messages.create({
       body: `Your access code is ${generateNumber}`,
       from: environment.TWILIO_FROM_PHONE_NUMER,
       to: phone,
-    });
-
-    res.status(200).json({
-      message: "Access code sent successfully",
     });
   },
   validateAccessCodeSms: async (req, res) => {
@@ -99,10 +101,12 @@ const authController = {
       from: environment.MAIL_ADMIN,
       to: email,
       subject: "Your Access Code",
-      text: `Your access code is ${generateNumber}`,
+      text: `Go to this site to verify your accout: http://localhost:5173/verify-email?email=${email} . Your access code is ${generateNumber}`,
     });
 
     res.status(200).json({
+      code: 200,
+      success: true,
       message: "Access code sent successfully",
     });
   },
