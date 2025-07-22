@@ -8,6 +8,11 @@ router.get(
   middlewareController.verifyTokenOwner,
   userController.getUsers
 );
+router.get(
+  "/all-users",
+  middlewareController.verifyToken,
+  userController.getAllUsers
+);
 router.post(
   "/users",
   middlewareController.verifyTokenOwner,

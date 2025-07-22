@@ -7,6 +7,13 @@ export function getUser() {
   });
 }
 
+export function getAllUser() {
+  return request({
+    url: "/all-users",
+    method: "get",
+  });
+}
+
 export function createUser(data) {
   return request({
     url: "/users",

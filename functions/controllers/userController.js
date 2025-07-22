@@ -1,6 +1,22 @@
 const { db } = require("../config/config.js");
 
 const userController = {
+  getAllUsers: async (req, res) => {
+    const users = [];
+
+    const user = await db.collection("users").get();
+
+    user.forEach((doc) => {
+      if (doc.id !== req.user.id) {
+        users.push({
+          id: doc.id,
+          ...doc.data(),
+        });
+      }
+    });
+
+    res.status(200).send(users);
+  },
   getUsers: async (req, res) => {
     const users = [];
 

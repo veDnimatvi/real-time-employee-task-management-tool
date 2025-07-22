@@ -7,6 +7,7 @@ const path = {
   MANAGE_USER: "/manage-user",
   MANAGE_TASK: "/manage-task",
   NOT_FOUND: "/not-found",
+  MESSAGE: "/message",
 };
 
 export default path;

@@ -9,6 +9,7 @@ import User from "../components/User/User";
 import VerifyEmail from "../components/VerifyEmail/VerifyEmail";
 import LoginEmployee from "../components/LoginEmployee/LoginEmployee";
 import Task from "../components/Task/Task";
+import Message from "../components/Message/Message";
 
 function Router() {
   const location = useLocation();
@@ -24,6 +25,7 @@ function Router() {
         { element: <Dashboard />, path: path.ROOT },
         { element: <User />, path: path.MANAGE_USER },
         { element: <Task />, path: path.MANAGE_TASK },
+        { element: <Message />, path: path.MESSAGE },
       ],
     },
     {

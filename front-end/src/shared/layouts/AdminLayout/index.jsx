@@ -58,6 +58,9 @@ function AdminLayout() {
             <Menu.Item key="manage-task" icon={<UserOutlined />}>
               Manage Task
             </Menu.Item>
+            <Menu.Item key="message" icon={<UserOutlined />}>
+              Message
+            </Menu.Item>
             <Menu.Item key="logOut" icon={<PoweroffOutlined />} danger>
               Log out
             </Menu.Item>
